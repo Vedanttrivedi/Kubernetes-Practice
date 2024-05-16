@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: first-replica
+  labels:
+    tier: prod-replica 
+spec:
+  template:
+    metadata:
+      name: apache-server
+      labels:
+        tier: prod-apache
+    spec:
+      containers:
+        - name: apache
+          image: httpd
+  replicas: 4
+  selector:
+    matchLabels:
+      tier: prod-apache
+    
+
+
