@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    name: frontend-deployment
+    branch: dev-frontend
+spec:
+  selector:
+    matchLabels:
+      language: frontend-js
+  template:
+    metadata:
+      name: apache-server
+      labels:
+        language: frontend-js
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx
+  replicas: 3
+    
+      

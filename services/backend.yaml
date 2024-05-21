@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    name: backend-deployment
+    branch: dev-backend
+spec:
+  selector:
+    matchLabels:
+      language: backend-php
+  template:
+    metadata:
+      name: apache-server
+      labels:
+        language: backend-php
+    spec:
+      containers:
+        - name: apache-server
+          image: httpd
+  replicas: 3
+    
+      
